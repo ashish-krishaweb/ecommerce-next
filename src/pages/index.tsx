@@ -1,118 +1,233 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import Image from "next/image";
+import { Inter, Poppins } from "next/font/google";
+import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
+import { AppButton, Heading, ProductCard } from "@/components/ui";
+import Head from "next/head";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Poppins({ subsets: ["latin"], weight: "400" });
 
-export default function Home() {
+export default function Home(
+  props: InferGetServerSidePropsType<typeof getServerSideProps>
+) {
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+      className={`flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+      <Head>
+        <title>{"SHOP.CO"}</title>
+        <meta name="title" content={"SHOP.CO"} />
+      </Head>
+
+      {/* banner */}
+      <section className="w-full h-[660px] relative bg-primary-light">
+        <div className="container">
+          <img
+            className="absolute h-[660px] w-full -z-10 max-lg:hidden"
+            src="/home-banner.png"
+          />
+          <div className="flex flex-col gap-8 w-full lg:w-1/2 bg-transparent p-4 py-24 lg:p-24">
+            <Heading type="banner" className="font-bold z-10">
+              FIND CLOTHES THAT MATCHES YOUR STYLE
+            </Heading>
+            <Heading className="z-10 text-[#00000099]">
+              Browse through our diverse range of meticulously crafted garments,
+              designed to bring out your individuality and cater to your sense
+              of style.
+            </Heading>
+            <AppButton
+              variant="filled"
+              className="rounded-full px-16 py-4 lg:max-w-60"
+            >
+              Shop Now
+            </AppButton>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      <NewArrivals />
+      <TopArrivals />
     </main>
-  )
+  );
 }
+
+export const getServerSideProps = (async () => {
+  console.log("server");
+  return {
+    props: { name: 1 },
+  };
+}) satisfies GetServerSideProps<{}>;
+
+function NewArrivals() {
+  return (
+    <div className="py-16 px-24">
+      <Heading type="primary" className="mb-14 text-center">
+        NEW ARRIVALS
+      </Heading>
+
+      {/* product card */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+        {NewArrivalsProducts.products.slice(0, 4).map((product) => {
+          return (
+            <ProductCard
+              key={product.id}
+              src={product.images[0]}
+              id={product.id}
+            >
+              <div className="flex flex-col gap-2 mt-4">
+                <h4 className="font-bold text-[20px] leading-[20px]">
+                  {product.title}
+                </h4>
+                <h4 className="font-bold text-[24px] leading-[32px]">
+                  ${product.price}
+                </h4>
+              </div>
+            </ProductCard>
+          );
+        })}
+      </div>
+      <div className=" mt-9 flex justify-center">
+        <AppButton className="rounded-full px-20 py-4">View All</AppButton>
+      </div>
+    </div>
+  );
+}
+
+function TopArrivals() {
+  return (
+    <div className="py-16 px-24">
+      <Heading type="primary" className="mb-14 text-center">
+        TOP ARRIVALS
+      </Heading>
+
+      {/* product card */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+        {NewArrivalsProducts.products.slice(1, 5).map((product) => {
+          return (
+            <ProductCard
+              key={product.id}
+              src={product.images[0]}
+              id={product.id}
+            >
+              <div className="flex flex-col gap-2 mt-4">
+                <h4 className="font-bold text-[20px] leading-[20px]">
+                  {product.title}
+                </h4>
+                <h4 className="font-bold text-[24px] leading-[32px]">
+                  ${product.price}
+                </h4>
+              </div>
+            </ProductCard>
+          );
+        })}
+      </div>
+      <div className=" mt-9 flex justify-center">
+        <AppButton className="rounded-full px-20 py-4">View All</AppButton>
+      </div>
+    </div>
+  );
+}
+
+const NewArrivalsProducts = {
+  products: [
+    {
+      id: 51,
+      title: "half sleeves T shirts",
+      description:
+        "Many store is creating new designs and trend every month and every year. Daraz.pk have a beautiful range of men fashion brands",
+      price: 23,
+      discountPercentage: 12.76,
+      rating: 4.26,
+      stock: 132,
+      brand: "Vintage Apparel",
+      category: "mens-shirts",
+      thumbnail: "https://cdn.dummyjson.com/product-images/51/thumbnail.jpg",
+      images: [
+        "https://cdn.dummyjson.com/product-images/51/1.png",
+        "https://cdn.dummyjson.com/product-images/51/2.jpg",
+        "https://cdn.dummyjson.com/product-images/51/3.jpg",
+        "https://cdn.dummyjson.com/product-images/51/thumbnail.jpg",
+      ],
+    },
+    {
+      id: 52,
+      title: "FREE FIRE T Shirt",
+      description:
+        "quality and professional print - It doesn't just look high quality, it is high quality.",
+      price: 10,
+      discountPercentage: 14.72,
+      rating: 4.52,
+      stock: 128,
+      brand: "FREE FIRE",
+      category: "mens-shirts",
+      thumbnail: "https://cdn.dummyjson.com/product-images/52/thumbnail.jpg",
+      images: [
+        "https://cdn.dummyjson.com/product-images/52/1.png",
+        "https://cdn.dummyjson.com/product-images/52/2.png",
+        "https://cdn.dummyjson.com/product-images/52/3.jpg",
+        "https://cdn.dummyjson.com/product-images/52/4.jpg",
+        "https://cdn.dummyjson.com/product-images/52/thumbnail.jpg",
+      ],
+    },
+    {
+      id: 53,
+      title: "printed high quality T shirts",
+      description: "Brand: vintage Apparel ,Export quality",
+      price: 35,
+      discountPercentage: 7.54,
+      rating: 4.89,
+      stock: 6,
+      brand: "Vintage Apparel",
+      category: "mens-shirts",
+      thumbnail: "https://cdn.dummyjson.com/product-images/53/thumbnail.jpg",
+      images: [
+        "https://cdn.dummyjson.com/product-images/53/1.webp",
+        "https://cdn.dummyjson.com/product-images/53/2.jpg",
+        "https://cdn.dummyjson.com/product-images/53/3.jpg",
+        "https://cdn.dummyjson.com/product-images/53/4.jpg",
+        "https://cdn.dummyjson.com/product-images/53/thumbnail.jpg",
+      ],
+    },
+    {
+      id: 54,
+      title: "Pubg Printed Graphic T-Shirt",
+      description:
+        "Product Description Features: 100% Ultra soft Polyester Jersey. Vibrant & colorful printing on front. Feels soft as cotton without ever cracking",
+      price: 46,
+      discountPercentage: 16.44,
+      rating: 4.62,
+      stock: 136,
+      brand: "The Warehouse",
+      category: "mens-shirts",
+      thumbnail: "https://cdn.dummyjson.com/product-images/54/thumbnail.jpg",
+      images: [
+        "https://cdn.dummyjson.com/product-images/54/1.jpg",
+        "https://cdn.dummyjson.com/product-images/54/2.jpg",
+        "https://cdn.dummyjson.com/product-images/54/3.jpg",
+        "https://cdn.dummyjson.com/product-images/54/4.jpg",
+        "https://cdn.dummyjson.com/product-images/54/thumbnail.jpg",
+      ],
+    },
+    {
+      id: 55,
+      title: "Money Heist Printed Summer T Shirts",
+      description: "Fabric Jercy, Size: M & L Wear Stylish Dual Stiched",
+      price: 66,
+      discountPercentage: 15.97,
+      rating: 4.9,
+      stock: 122,
+      brand: "The Warehouse",
+      category: "mens-shirts",
+      thumbnail: "https://cdn.dummyjson.com/product-images/55/thumbnail.jpg",
+      images: [
+        "https://cdn.dummyjson.com/product-images/55/1.jpg",
+        "https://cdn.dummyjson.com/product-images/55/2.webp",
+        "https://cdn.dummyjson.com/product-images/55/3.jpg",
+        "https://cdn.dummyjson.com/product-images/55/4.jpg",
+        "https://cdn.dummyjson.com/product-images/55/thumbnail.jpg",
+      ],
+    },
+  ],
+  total: 5,
+  skip: 0,
+  limit: 5,
+};
