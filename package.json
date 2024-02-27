@@ -6,10 +6,12 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write ./src"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.18.0",
+    "axios": "^1.6.7",
     "classic-react-components": "^0.1.0",
     "clsx": "^2.1.0",
     "immer": "^10.0.3",
