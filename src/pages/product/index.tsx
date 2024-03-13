@@ -31,6 +31,7 @@ export default function ProductListPage() {
             {/* product card */}
             <div className='grid grid-cols-2 lg:grid-cols-4 gap-5'>
                {products?.map((product) => {
+                  // @ts-ignore
                   return <PCard key={product.id} {...product} img={product.images[0]} />
                })}
             </div>
