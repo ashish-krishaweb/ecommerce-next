@@ -1,9 +1,9 @@
-import { getAllProducts } from "@/services/product.service";
-import { useQuery } from "@tanstack/react-query";
+import { getAllProducts } from '@/services/product.service'
+import { useQuery } from '@tanstack/react-query'
 
-export function useGetAllProducts(){
-    return useQuery({
-        queryKey:['get-all-products'],
-        queryFn: getAllProducts
-    })
+export function useGetAllProducts() {
+   return useQuery({
+      queryKey: ['get-all-products'],
+      queryFn: getAllProducts,
+   })
 }

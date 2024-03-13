@@ -50,56 +50,53 @@ export default function Footer() {
                </div>
             </div>
 
-            <div></div>
-
-            <div>
-               <AppHeading as='h6' className='text-base font-medium mb-7 font-body tracking-[3px]'>
-                  Company
-               </AppHeading>
-               <div className='flex flex-col gap-4'>
-                  <AppText className='text-[#00000099]'>About</AppText>
-                  <AppText className='text-[#00000099]'>Features</AppText>
-                  <AppText className='text-[#00000099]'>Works</AppText>
-                  <AppText className='text-[#00000099]'>Career</AppText>
+            <div className='w-full col-span-8 flex justify-between gap-x-7'>
+               <div>
+                  <AppHeading as='h6' className='text-base font-medium mb-7 font-body tracking-[3px]'>
+                     Company
+                  </AppHeading>
+                  <div className='flex flex-col gap-4'>
+                     <AppText className='text-[#00000099]'>About</AppText>
+                     <AppText className='text-[#00000099]'>Features</AppText>
+                     <AppText className='text-[#00000099]'>Works</AppText>
+                     <AppText className='text-[#00000099]'>Career</AppText>
+                  </div>
                </div>
-            </div>
 
-            <div></div>
-            <div>
-               <AppHeading as='h6' className='text-base font-medium mb-7 font-body tracking-[3px]'>
-                  Help
-               </AppHeading>
-               <div className='flex flex-col gap-4'>
-                  <AppText className='text-[#00000099]'>Customer Support</AppText>
-                  <AppText className='text-[#00000099]'>Delivery Details</AppText>
-                  <AppText className='text-[#00000099]'>Terms & Conditions</AppText>
-                  <AppText className='text-[#00000099]'>Privacy Policy</AppText>
+               <div>
+                  <AppHeading as='h6' className='text-base font-medium mb-7 font-body tracking-[3px]'>
+                     Help
+                  </AppHeading>
+                  <div className='flex flex-col gap-4'>
+                     <AppText className='text-[#00000099]'>Customer Support</AppText>
+                     <AppText className='text-[#00000099]'>Delivery Details</AppText>
+                     <AppText className='text-[#00000099]'>Terms & Conditions</AppText>
+                     <AppText className='text-[#00000099]'>Privacy Policy</AppText>
+                  </div>
                </div>
-            </div>
 
-            <div></div>
-            <div>
-               <AppHeading as='h6' className='text-base font-medium mb-7 font-body tracking-[3px]'>
-                  FAQ
-               </AppHeading>
-               <div className='flex flex-col gap-4'>
-                  <AppText className='text-[#00000099]'>Account</AppText>
-                  <AppText className='text-[#00000099]'>Manage Deliveries</AppText>
-                  <AppText className='text-[#00000099]'>Orders</AppText>
-                  <AppText className='text-[#00000099]'>Payments</AppText>
+               <div>
+                  <AppHeading as='h6' className='text-base font-medium mb-7 font-body tracking-[3px]'>
+                     FAQ
+                  </AppHeading>
+                  <div className='flex flex-col gap-4'>
+                     <AppText className='text-[#00000099]'>Account</AppText>
+                     <AppText className='text-[#00000099]'>Manage Deliveries</AppText>
+                     <AppText className='text-[#00000099]'>Orders</AppText>
+                     <AppText className='text-[#00000099]'>Payments</AppText>
+                  </div>
                </div>
-            </div>
 
-            <div></div>
-            <div>
-               <AppHeading as='h6' className='text-base font-medium mb-7 font-body tracking-[3px]'>
-                  Resources
-               </AppHeading>
-               <div className='flex flex-col gap-4'>
-                  <AppText className='text-[#00000099]'>Free eBooks</AppText>
-                  <AppText className='text-[#00000099] whitespace-nowrap'>Development Tutorial</AppText>
-                  <AppText className='text-[#00000099]'>How to - Blog</AppText>
-                  <AppText className='text-[#00000099]'>Youtube Playlist</AppText>
+               <div>
+                  <AppHeading as='h6' className='text-base font-medium mb-7 font-body tracking-[3px]'>
+                     Resources
+                  </AppHeading>
+                  <div className='flex flex-col gap-4'>
+                     <AppText className='text-[#00000099]'>Free eBooks</AppText>
+                     <AppText className='text-[#00000099] whitespace-nowrap'>Development Tutorial</AppText>
+                     <AppText className='text-[#00000099]'>How to - Blog</AppText>
+                     <AppText className='text-[#00000099]'>Youtube Playlist</AppText>
+                  </div>
                </div>
             </div>
          </div>

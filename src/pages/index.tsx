@@ -1,27 +1,22 @@
-import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 import { AppButton, Heading, ProductCard } from '@/components/ui'
-import Head from 'next/head'
 import { AppHeading, AppText } from '@comp/ui/heading'
-import { useGetAllProducts } from '@/hooks/use-product-service'
-import { QueryClient, dehydrate, useQuery } from '@tanstack/react-query'
-import { getAllProducts } from '@/services/product.service'
+import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import Head from 'next/head'
 
 export default function Home(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
-   console.log({props})
-   const { data } = useQuery({ queryKey: ['products'], queryFn: getAllProducts })
-   
-
    return (
       <main className={`flex min-h-screen flex-col items-center justify-between`}>
          <Head>
             <title>{'SHOP.CO'}</title>
-            <meta name='title' content={'SHOP.CO'} />
+            <meta name='og:title' content={'SHOP.CO'} />
+            <meta name='og:description' content={'SHOP.CO is awesome ecommerce website'} />
+            <meta name='og:image' content={'https://ecommerce-next-teal.vercel.app/home-banner.png'} />
          </Head>
 
          {/* banner */}
          <section className='w-full h-[660px] relative bg-primary-light'>
             <div className='container'>
-               <img className='absolute h-[660px] w-full -z-10 max-lg:hidden' src='/home-banner.png' />
+               <img className='absolute h-[660px] w-full z-10 max-lg:hidden' src='/home-banner.png' />
                <div className='flex flex-col gap-8 w-full lg:w-1/2 bg-transparent p-4 py-24 lg:p-24'>
                   <Heading type='banner' className='font-bold z-10 font-integral'>
                      FIND CLOTHES THAT MATCHES YOUR STYLE
@@ -30,7 +25,7 @@ export default function Home(props: InferGetServerSidePropsType<typeof getServer
                      Browse through our diverse range of meticulously crafted garments, designed to bring out your
                      individuality and cater to your sense of style.
                   </AppText>
-                  <AppButton variant='filled' className='rounded-full px-16 py-4 lg:max-w-60'>
+                  <AppButton variant='filled' className='rounded-full px-16 py-4 lg:max-w-60 z-10'>
                      Shop Now
                   </AppButton>
                </div>
@@ -45,24 +40,11 @@ export default function Home(props: InferGetServerSidePropsType<typeof getServer
    )
 }
 
-async function loader(){
-   const queryClient = new QueryClient()
-   await queryClient.prefetchQuery({
-      queryKey: ['products',1],
-      queryFn: (await getAllProducts()),
-      // gcTime:0,
-    })
-    
-    return await dehydrate(queryClient)
-    
-
-}
 export const getServerSideProps = (async () => {
-  
    return {
-      props: { 
-         dehydratedState: await loader()
-       },
+      props: {
+         dehydratedState: {},
+      },
    }
 }) satisfies GetServerSideProps<{}>
 
@@ -132,7 +114,7 @@ function TopArrivals() {
    )
 }
 
-const NewArrivalsProducts = {
+export const NewArrivalsProducts = {
    products: [
       {
          id: 51,

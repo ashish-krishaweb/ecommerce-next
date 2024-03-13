@@ -80,7 +80,7 @@ export function AppButton(
             variant == 'outlined' &&
                ((color == 'black' && 'text-black bg-white border border-[#0000001A]') ||
                   (color == 'success' && 'text-green-700 bg-white')),
-            'font-body',
+            'font-body font-medium',
             className
          )}
          {...rest}>
@@ -91,26 +91,16 @@ export function AppButton(
 
 export function ProductCard({ src, children, id }: { src: string; id: number; children?: ReactNode }) {
    return (
-      <Link href={`/product/${id}`}>
+      <Link href={`/product/${id}`} className='hover:scale-90 transition-all'>
          <ProductImgCard src={src} />
          {children}
       </Link>
    )
 }
-function ProductImgCard({ src }: { src: string }) {
+export function ProductImgCard({ src }: { src: string }) {
    return (
       <div className='bg-[#F0EEED] rounded-lg p-5 flex items-center justify-center'>
          <img src={src} width={250} height={250} />
       </div>
    )
-}
-function RatingStar() {
-   return <div></div>
-}
-function ProductReviewCard() {
-   return <div></div>
-}
-
-function AppInput() {
-   return <input type='text' />
 }

@@ -3,11 +3,12 @@ import { AppHeading } from '@/components/ui/heading'
 import { cnMerge } from '@/lib/cn-merge'
 import useProductStore, { Product } from '@/stores/product.store'
 import { For } from 'classic-react-components'
+import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
-export default function ProductDetailPage() {
+export default function ProductDetailPage(props: Product) {
    const router = useRouter()
    const productIdSlug = +router.query.slug!
    const [productDetails, setProductDetails] = useState<Product>({} as Product)
@@ -19,6 +20,10 @@ export default function ProductDetailPage() {
    const removeItem = useProductStore((state) => state.removeItem)
 
    useEffect(() => {
+      if (props.id) {
+         setProductDetails(props)
+         return
+      }
       async function fetchDetails() {
          if (productIdSlug) {
             try {
@@ -34,9 +39,10 @@ export default function ProductDetailPage() {
    return (
       <main className={`flex min-h-screen flex-col items-center justify-between`}>
          <Head>
-            <title>{productDetails.title}</title>
-            <meta name='title' content={productDetails.title} />
-            <meta name='description' content={productDetails.description} />
+            <title>{props.title}</title>
+            <meta name='og:title' content={props.title} />
+            <meta name='og:description' content={props.description} />
+            <meta name='og:image' content={props.images[0]} />
          </Head>
 
          {Object.keys(productDetails).length == 0 && (
@@ -58,7 +64,7 @@ export default function ProductDetailPage() {
                               key={img}
                               className={`${active == idx ? 'border-black' : ''} flex items-center w-[152px] h-[167px] bg-gray-100 p-4 border  rounded-lg cursor-pointer`}
                               onClick={() => setActive(idx)}>
-                              <img src={img} />
+                              <img src={img} alt='image' />
                            </div>
                         )
                      }}
@@ -77,9 +83,9 @@ export default function ProductDetailPage() {
                         className='font-extrabold text-[24px] leading-[28px] lg:text-[40px] lg:leading-[48px]'>
                         {productDetails.title}
                      </AppHeading>
-                     <h3 className='font-extrabold text-[24px] leading-[32px] lg:text-[32px] lg:leading-[43px]'>
-                        ${productDetails.price}{' '}
-                        <span className='text-[#0000004D]'>${(+productDetails.price * 20) / 100}</span>
+                     <h3 className='font-extrabold text-[24px] leading-[32px] lg:text-[32px] lg:leading-[43px] flex gap-3 items-center'>
+                        <span className="current-price">${productDetails.price}{' '}</span>
+                        <span className='text-[#0000004D] line-through'>${(+productDetails.price * 20) / 100}</span>
                         <span>
                            <svg
                               width='72'
@@ -173,3 +179,18 @@ export default function ProductDetailPage() {
       </main>
    )
 }
+
+export const getServerSideProps = (async (props) => {
+   try {
+      // @ts-ignore
+      const res = await fetch(`https://dummyjson.com/products/${props.params.slug}`)
+      const data = await res.json()
+      return {
+         props: data,
+      }
+   } catch {
+      return {
+         props: {},
+      }
+   }
+}) satisfies GetServerSideProps<{}>
