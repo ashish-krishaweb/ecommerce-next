@@ -1,6 +1,6 @@
 import { cnMerge } from '@/lib/cn-merge'
 import Link from 'next/link'
-import { ComponentProps, ElementRef, ReactNode, RefObject, useRef } from 'react'
+import { ComponentProps, ElementRef, ReactNode, RefObject } from 'react'
 
 export function Heading(
    props: ComponentProps<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'caption'> & {
@@ -91,7 +91,7 @@ export function AppButton(
 
 export function ProductCard({ src, children, id }: { src: string; id: number; children?: ReactNode }) {
    return (
-      <Link href={`/product/${id}`} className='hover:scale-90 transition-all'>
+      <Link href={`/product/${id}`} className='hover:scale-90 transition-all flex flex-col justify-between'>
          <ProductImgCard src={src} />
          {children}
       </Link>
@@ -99,7 +99,7 @@ export function ProductCard({ src, children, id }: { src: string; id: number; ch
 }
 export function ProductImgCard({ src }: { src: string }) {
    return (
-      <div className='bg-[#F0EEED] rounded-lg p-5 flex items-center justify-center'>
+      <div className=' rounded-lg p-5 flex items-center justify-center'>
          <img src={src} width={250} height={250} />
       </div>
    )

@@ -40,7 +40,9 @@ export default function ProductDetailPage(props: Product) {
       <main className={`flex min-h-screen flex-col items-center justify-between`}>
          <Head>
             <title>{props.title}</title>
+            <meta name='title' content={props.title} />
             <meta name='og:title' content={props.title} />
+            <meta name='description' content={props.description} />
             <meta name='og:description' content={props.description} />
             <meta name='og:image' content={props.images[0]} />
          </Head>
@@ -84,7 +86,7 @@ export default function ProductDetailPage(props: Product) {
                         {productDetails.title}
                      </AppHeading>
                      <h3 className='font-extrabold text-[24px] leading-[32px] lg:text-[32px] lg:leading-[43px] flex gap-3 items-center'>
-                        <span className="current-price">${productDetails.price}{' '}</span>
+                        <span className='current-price'>${productDetails.price} </span>
                         <span className='text-[#0000004D] line-through'>${(+productDetails.price * 20) / 100}</span>
                         <span>
                            <svg

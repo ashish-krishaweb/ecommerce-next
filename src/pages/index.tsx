@@ -1,6 +1,7 @@
 import { AppButton, Heading, ProductCard } from '@/components/ui'
 import { AppHeading, AppText } from '@comp/ui/heading'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 export default function Home(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
@@ -8,7 +9,9 @@ export default function Home(props: InferGetServerSidePropsType<typeof getServer
       <main className={`flex min-h-screen flex-col items-center justify-between`}>
          <Head>
             <title>{'SHOP.CO'}</title>
+            <meta name='title' content={'SHOP.CO'} />
             <meta name='og:title' content={'SHOP.CO'} />
+            <meta name='description' content={'SHOP.CO is awesome ecommerce website'} />
             <meta name='og:description' content={'SHOP.CO is awesome ecommerce website'} />
             <meta name='og:image' content={'https://ecommerce-next-teal.vercel.app/home-banner.png'} />
          </Head>
@@ -49,6 +52,8 @@ export const getServerSideProps = (async () => {
 }) satisfies GetServerSideProps<{}>
 
 function NewArrivals() {
+   const router = useRouter()
+
    return (
       <div className='py-16 px-24'>
          <div className='text-center pb-14'>
@@ -75,13 +80,17 @@ function NewArrivals() {
             })}
          </div>
          <div className=' mt-9 flex justify-center'>
-            <AppButton className='rounded-full px-20 py-4'>View All</AppButton>
+            <AppButton onClick={() => router.push('/product')} className='rounded-full px-20 py-4'>
+               View All
+            </AppButton>
          </div>
       </div>
    )
 }
 
 function TopArrivals() {
+   const router = useRouter()
+
    return (
       <div className='py-16 px-24'>
          <div className='text-center pb-14'>
@@ -108,7 +117,9 @@ function TopArrivals() {
             })}
          </div>
          <div className=' mt-9 flex justify-center'>
-            <AppButton className='rounded-full px-20 py-4'>View All</AppButton>
+            <AppButton onClick={() => router.push('/product')} className='rounded-full px-20 py-4'>
+               View All
+            </AppButton>
          </div>
       </div>
    )
