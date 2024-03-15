@@ -19,7 +19,7 @@ export default function Home(props: InferGetServerSidePropsType<typeof getServer
          {/* banner */}
          <section className='w-full h-[660px] relative bg-primary-light'>
             <div className='container'>
-               <img className='absolute h-[660px] w-full z-10 max-lg:hidden' src='/home-banner.png' />
+               <img alt='home banner' className='absolute h-[660px] w-full z-10 max-lg:hidden' src='/home-banner.png' />
                <div className='flex flex-col gap-8 w-full lg:w-1/2 bg-transparent p-4 py-24 lg:p-24'>
                   <Heading type='banner' className='font-bold z-10 font-integral'>
                      FIND CLOTHES THAT MATCHES YOUR STYLE
