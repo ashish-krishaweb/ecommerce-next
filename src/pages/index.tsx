@@ -8,7 +8,9 @@ export default function Home(props: InferGetServerSidePropsType<typeof getServer
       <main className={`flex min-h-screen flex-col items-center justify-between`}>
          <Head>
             <title>{'SHOP.CO'}</title>
+            <meta name='title' content={'SHOP.CO'} />
             <meta name='og:title' content={'SHOP.CO'} />
+            <meta name='description' content={'SHOP.CO is awesome ecommerce website'} />
             <meta name='og:description' content={'SHOP.CO is awesome ecommerce website'} />
             <meta name='og:image' content={'https://ecommerce-next-teal.vercel.app/home-banner.png'} />
          </Head>

@@ -1,6 +1,6 @@
 import { cnMerge } from '@/lib/cn-merge'
 import Link from 'next/link'
-import { ComponentProps, ElementRef, ReactNode, RefObject, useRef } from 'react'
+import { ComponentProps, ElementRef, ReactNode, RefObject } from 'react'
 
 export function Heading(
    props: ComponentProps<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'caption'> & {

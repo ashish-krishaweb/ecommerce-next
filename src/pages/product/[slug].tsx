@@ -40,7 +40,9 @@ export default function ProductDetailPage(props: Product) {
       <main className={`flex min-h-screen flex-col items-center justify-between`}>
          <Head>
             <title>{props.title}</title>
+            <meta name='title' content={props.title} />
             <meta name='og:title' content={props.title} />
+            <meta name='description' content={props.description} />
             <meta name='og:description' content={props.description} />
             <meta name='og:image' content={props.images[0]} />
          </Head>
