@@ -1,6 +1,7 @@
 import { AppButton, Heading, ProductCard } from '@/components/ui'
 import { AppHeading, AppText } from '@comp/ui/heading'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 export default function Home(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
@@ -51,6 +52,8 @@ export const getServerSideProps = (async () => {
 }) satisfies GetServerSideProps<{}>
 
 function NewArrivals() {
+   const router = useRouter()
+
    return (
       <div className='py-16 px-24'>
          <div className='text-center pb-14'>
@@ -77,13 +80,17 @@ function NewArrivals() {
             })}
          </div>
          <div className=' mt-9 flex justify-center'>
-            <AppButton className='rounded-full px-20 py-4'>View All</AppButton>
+            <AppButton onClick={() => router.push('/product')} className='rounded-full px-20 py-4'>
+               View All
+            </AppButton>
          </div>
       </div>
    )
 }
 
 function TopArrivals() {
+   const router = useRouter()
+
    return (
       <div className='py-16 px-24'>
          <div className='text-center pb-14'>
@@ -110,7 +117,9 @@ function TopArrivals() {
             })}
          </div>
          <div className=' mt-9 flex justify-center'>
-            <AppButton className='rounded-full px-20 py-4'>View All</AppButton>
+            <AppButton onClick={() => router.push('/product')} className='rounded-full px-20 py-4'>
+               View All
+            </AppButton>
          </div>
       </div>
    )
