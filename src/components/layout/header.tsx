@@ -6,7 +6,7 @@ export default function Header() {
 
    return (
       <header className='h-[96px] bg-white  px-4 lg:px-16 flex items-center justify-between'>
-         <Link href='/'>
+         <Link href='/' aria-label='Shop.co' title='Shop.co'>
             <div className='hidden lg:inline'>
                <svg width='159' height='25' viewBox='0 0 159 25' fill='none' xmlns='http://www.w3.org/2000/svg'>
                   <path

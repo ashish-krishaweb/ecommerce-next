@@ -100,7 +100,7 @@ export function ProductCard({ src, children, id }: { src: string; id: number; ch
 export function ProductImgCard({ src }: { src: string }) {
    return (
       <div className=' rounded-lg p-5 flex items-center justify-center'>
-         <img src={src} width={250} height={250} />
+         <img src={src} alt={"product"} width={250} height={250} />
       </div>
    )
 }
